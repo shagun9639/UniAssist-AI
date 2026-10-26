@@ -13,10 +13,17 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-echo.
-echo [NOTE] By default, Spring Boot connects to MySQL on localhost:3306 (database: uniassist_db).
-echo [NOTE] To run with zero-setup H2 in-memory mode, launch with: set SPRING_PROFILES_ACTIVE=h2
-echo.
+if "%SPRING_PROFILES_ACTIVE%"=="" (
+    echo [INFO] Checking if local MySQL is reachable on port 3306...
+    powershell -Command "if (!(Test-NetConnection -ComputerName 127.0.0.1 -Port 3306 -InformationLevel Quiet -WarningAction SilentlyContinue)) { exit 1 }" >nul 2>&1
+    if errorlevel 1 (
+        echo [INFO] MySQL not detected on port 3306. Activating embedded H2 database mode.
+        set SPRING_PROFILES_ACTIVE=h2
+    ) else (
+        echo [INFO] MySQL detected on port 3306. Using default MySQL profile.
+    )
+)
 
+echo [INFO] Launching Spring Boot with active profile: %SPRING_PROFILES_ACTIVE%
 call .\mvnw.cmd spring-boot:run
 pause
