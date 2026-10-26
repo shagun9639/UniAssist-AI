@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic & Campus Hub – UniAssist AI</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-uni">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-mortarboard-fill text-primary" style="font-size: 1.5rem;"></i>
+                <span>UniAssist <span class="text-primary" style="color: var(--accent) !important;">AI</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chatbot.html">AI Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="academics.html">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">My Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="model-analytics.html">ML Analytics</a></li>
+                </ul>
+                <div id="navbar-auth-section" class="d-flex align-items-center"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <div class="bg-white border-bottom py-4 mb-4">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h2 class="fw-bold mb-1">Academic & Campus Information Hub</h2>
+                    <p class="text-secondary small mb-0">Official university curriculum, examination ordinances, fee schedules, and campus facilities</p>
+                </div>
+                <div>
+                    <a href="chatbot.html" class="btn btn-primary-uni btn-sm d-flex align-items-center gap-2">
+                        <i class="bi bi-robot"></i> Ask Chatbot About Academics
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container mb-5">
+
+        <!-- Navigation Tabs -->
+        <ul class="nav nav-pills mb-4 bg-white p-2 rounded border shadow-sm" id="academicTabs" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" id="tab-courses-btn" data-bs-toggle="tab" data-bs-target="#tab-courses" type="button">
+                    <i class="bi bi-journal-code me-1"></i> Degree Programs
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-calendar-btn" data-bs-toggle="tab" data-bs-target="#tab-calendar" type="button">
+                    <i class="bi bi-calendar3 me-1"></i> Academic Calendar
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-attendance-btn" data-bs-toggle="tab" data-bs-target="#tab-attendance" type="button">
+                    <i class="bi bi-check2-circle me-1"></i> Attendance Rules
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-exams-btn" data-bs-toggle="tab" data-bs-target="#tab-exams" type="button">
+                    <i class="bi bi-card-checklist me-1"></i> Examination System
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-fees-btn" data-bs-toggle="tab" data-bs-target="#tab-fees" type="button">
+                    <i class="bi bi-cash-stack me-1"></i> Fees & Scholarships
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-facilities-btn" data-bs-toggle="tab" data-bs-target="#tab-facilities" type="button">
+                    <i class="bi bi-buildings me-1"></i> Campus Facilities
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-announcements-btn" data-bs-toggle="tab" data-bs-target="#tab-announcements" type="button">
+                    <i class="bi bi-megaphone me-1"></i> Notices & Circulars
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Contents -->
+        <div class="tab-content" id="academicTabContent">
+
+            <!-- 1. Degree Programs -->
+            <div class="tab-pane fade show active" id="tab-courses" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold mb-0">Undergraduate & Postgraduate Programs</h5>
+                    <div style="max-width: 280px;">
+                        <input type="text" id="course-filter-input" class="form-control form-control-sm" placeholder="Filter courses by name or code...">
+                    </div>
+                </div>
+                <div class="row g-3" id="courses-grid-container">
+                    <div class="text-center py-5 text-muted small col-12">
+                        <div class="spinner-border spinner-border-sm text-primary mb-2"></div>
+                        <div>Loading accredited programs...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Academic Calendar -->
+            <div class="tab-pane fade" id="tab-calendar" role="tabpanel">
+                <div class="uni-card mb-4">
+                    <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-calendar-event text-primary"></i> Academic Year 2026-2027 Schedule
+                    </h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Event & Milestone</th>
+                                    <th>Category</th>
+                                    <th>Semester</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendar-table-body">
+                                <tr><td colspan="6" class="text-center py-4 text-muted">Loading calendar milestones...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Attendance Ordinance -->
+            <div class="tab-pane fade" id="tab-attendance" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="uni-card mb-4">
+                            <h5 class="fw-bold text-primary mb-3">Ordinance on Minimum Attendance Requirements</h5>
+                            <p class="text-secondary small">
+                                According to Section 4 of the University Academic Regulations, regular attendance in classes is an essential part of the educational process.
+                            </p>
+                            <div class="border-start border-4 border-primary ps-3 my-3 py-1 bg-light">
+                                <h6 class="fw-bold mb-1 text-primary">75% Mandatory Attendance Rule</h6>
+                                <p class="small text-muted mb-0">Every student must secure minimum 75% attendance in theory lectures, tutorials, and practical laboratory sessions in each registered course.</p>
+                            </div>
+                            <h6 class="fw-bold mt-4 mb-2">Medical & Event Condonation:</h6>
+                            <ul class="text-secondary small ps-3">
+                                <li class="mb-2"><strong>Medical Grounds:</strong> In case of prolonged hospitalization or serious medical illness, relaxation up to 10% (minimum 65% aggregate) can be granted by the Dean on submission of authentic medical records within 7 days of returning to campus.</li>
+                                <li class="mb-2"><strong>University Representation:</strong> Duty leave (OD) is granted to students officially deputed to represent the university in sports competitions, technical symposiums, or cultural festivals.</li>
+                                <li class="mb-2"><strong>Debarment Consequence:</strong> Students with less than 65% attendance under any circumstances will be detained from appearing in End-Semester Examinations for that subject.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="uni-card bg-light border-0">
+                            <h6 class="fw-bold mb-3"><i class="bi bi-info-circle text-primary me-2"></i>Attendance Actions</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="chatbot.html?ask=How do I submit medical leave for attendance shortage?" class="btn btn-outline-uni btn-sm text-start">
+                                    <i class="bi bi-file-earmark-medical me-2"></i>Medical Condonation Process
+                                </a>
+                                <a href="support.html" class="btn btn-outline-uni btn-sm text-start">
+                                    <i class="bi bi-envelope-exclamation me-2"></i>Report Attendance Discrepancy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Examination System -->
+            <div class="tab-pane fade" id="tab-exams" role="tabpanel">
+                <div class="uni-card mb-4">
+                    <h5 class="fw-bold mb-3">University 10-Point Grading Scale & Examination Evaluation</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-center">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Letter Grade</th>
+                                    <th>Grade Point</th>
+                                    <th>Performance Level</th>
+                                    <th>Marks Percentage Equivalent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><span class="badge bg-success">O</span></td><td class="fw-bold">10</td><td>Outstanding</td><td>90% and above</td></tr>
+                                <tr><td><span class="badge bg-primary">A+</span></td><td class="fw-bold">9</td><td>Excellent</td><td>80% to 89%</td></tr>
+                                <tr><td><span class="badge bg-primary">A</span></td><td class="fw-bold">8</td><td>Very Good</td><td>70% to 79%</td></tr>
+                                <tr><td><span class="badge bg-info">B+</span></td><td class="fw-bold">7</td><td>Good</td><td>60% to 69%</td></tr>
+                                <tr><td><span class="badge bg-info">B</span></td><td class="fw-bold">6</td><td>Above Average</td><td>55% to 59%</td></tr>
+                                <tr><td><span class="badge bg-warning">C</span></td><td class="fw-bold">5</td><td>Average</td><td>50% to 54%</td></tr>
+                                <tr><td><span class="badge bg-secondary">P</span></td><td class="fw-bold">4</td><td>Pass</td><td>40% to 49%</td></tr>
+                                <tr><td><span class="badge bg-danger">F</span></td><td class="fw-bold">0</td><td>Fail (Re-appear)</td><td>Below 40%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4 p-3 bg-light rounded small">
+                        <strong>Passing Rule:</strong> A student must obtain at least 40% in internal continuous assessment and 40% in final end-semester theory/practical examinations to be declared passed in any registered course.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Fees & Scholarships -->
+            <div class="tab-pane fade" id="tab-fees" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="uni-card h-100">
+                            <h5 class="fw-bold text-primary mb-3"><i class="bi bi-credit-card me-2"></i>Tuition Payment Guidelines</h5>
+                            <ul class="text-secondary small ps-3">
+                                <li class="mb-2"><strong>Accepted Modes:</strong> Net Banking, UPI, Debit/Credit Card, or NEFT/RTGS bank challan via Student Portal.</li>
+                                <li class="mb-2"><strong>Deadlines:</strong> Autumn Semester fees are due on July 31; Spring Semester fees are due on December 31.</li>
+                                <li class="mb-2"><strong>Late Fees:</strong> A grace period of 7 days applies. Afterwards, Rs. 100/day late penalty is assessed.</li>
+                                <li class="mb-2"><strong>Installments:</strong> Students experiencing economic hardship can submit an installment request to the Finance Registrar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="uni-card h-100">
+                            <h5 class="fw-bold text-success mb-3"><i class="bi bi-award me-2"></i>Merit Scholarships & Waivers</h5>
+                            <ul class="text-secondary small ps-3">
+                                <li class="mb-2"><strong>University Merit Scholarship:</strong> Top 5% students in each branch maintaining CGPA >= 8.5 with no backlogs receive up to 50% tuition waiver.</li>
+                                <li class="mb-2"><strong>Merit-cum-Means Assistance:</strong> Available to students whose total family income is under Rs. 3,00,000 per annum.</li>
+                                <li class="mb-2"><strong>National Scholarship Portal (NSP):</strong> All central and state government post-matric scholarships are processed through the Dean Student Welfare Cell.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Campus Facilities -->
+            <div class="tab-pane fade" id="tab-facilities" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="uni-card h-100">
+                            <div class="stat-icon primary mb-3"><i class="bi bi-book text-primary"></i></div>
+                            <h6 class="fw-bold">Central Library</h6>
+                            <p class="text-secondary small mb-1">Open 8:00 AM – 10:00 PM (24/7 during exam weeks). Over 120,000 physical volumes, reading halls, and IEEE/ACM digital access.</p>
+                            <span class="badge bg-light text-muted border small">Ext: 3201</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="uni-card h-100">
+                            <div class="stat-icon accent mb-3"><i class="bi bi-houses text-primary"></i></div>
+                            <h6 class="fw-bold">Hostel Residence</h6>
+                            <p class="text-secondary small mb-1">Fully furnished 2-seater and 3-seater rooms, high-speed Wi-Fi, 4 dining messes, and 9:30 PM entry curfew.</p>
+                            <span class="badge bg-light text-muted border small">Chief Warden: Room 104</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="uni-card h-100">
+                            <div class="stat-icon warning mb-3"><i class="bi bi-bus-front text-warning"></i></div>
+                            <h6 class="fw-bold">University Transport</h6>
+                            <p class="text-secondary small mb-1">Fleet of 45 AC buses operating across 30 routes in the metro area. Morning arrivals by 8:40 AM, evening returns at 4:45 PM & 6:30 PM.</p>
+                            <span class="badge bg-light text-muted border small">Transport Cell</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="uni-card h-100">
+                            <div class="stat-icon success mb-3"><i class="bi bi-heart-pulse text-success"></i></div>
+                            <h6 class="fw-bold">Health Care Center</h6>
+                            <p class="text-secondary small mb-1">24/7 emergency clinic with resident medical officers, pharmacy, and dedicated campus ambulances.</p>
+                            <span class="badge bg-danger text-white small">Emergency: Ext 4444</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="uni-card h-100">
+                            <div class="stat-icon primary mb-3"><i class="bi bi-trophy text-primary"></i></div>
+                            <h6 class="fw-bold">Sports & Athletics Complex</h6>
+                            <p class="text-secondary small mb-1">Olympic swimming pool, 400m running track, football stadium, indoor badminton courts, and gym open 6 AM - 9 PM.</p>
+                            <span class="badge bg-light text-muted border small">Sports Directorate</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="uni-card h-100">
+                            <div class="stat-icon accent mb-3"><i class="bi bi-wifi text-primary"></i></div>
+                            <h6 class="fw-bold">IT Helpdesk & Computing</h6>
+                            <p class="text-secondary small mb-1">Computer Center Room 102 for portal resets, eduroam Wi-Fi credentials, and free student Microsoft Office 365 licenses.</p>
+                            <span class="badge bg-light text-muted border small">it-support@university.edu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Notices & Announcements -->
+            <div class="tab-pane fade" id="tab-announcements" role="tabpanel">
+                <div class="uni-card">
+                    <h5 class="fw-bold mb-3">Campus Notices & Official Circulars</h5>
+                    <div id="full-announcements-list">
+                        <div class="text-center py-4 text-muted small">Loading notices...</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-top py-3 text-center text-muted small">
+        <div class="container">
+            UniAssist AI Academic Repository • Verified from University Ordinances 2026-27
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/academics.js"></script>
+</body>
+</html>

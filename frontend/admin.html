@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Console – UniAssist AI</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-uni">
+        <div class="container-fluid px-3 px-md-4">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-mortarboard-fill text-primary" style="font-size: 1.5rem;"></i>
+                <span>UniAssist <span class="badge bg-danger text-white rounded-pill px-2 py-1 ms-1" style="font-size:0.68rem;">ADMIN</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" href="admin.html">Admin Console</a></li>
+                    <li class="nav-item"><a class="nav-link" href="model-analytics.html">ML Analytics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chatbot.html">Test Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Student View</a></li>
+                </ul>
+                <div id="navbar-auth-section" class="d-flex align-items-center"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Admin Container -->
+    <main class="container-fluid px-3 px-md-4 py-4 mb-5">
+
+        <!-- Header -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4">
+            <div>
+                <h3 class="fw-bold mb-0">University Operations Administration</h3>
+                <p class="text-secondary small mb-0">Manage university knowledge base, review student support tickets, and inspect machine learning intent analytics</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-uni btn-sm" onclick="loadAdminDashboardData()">
+                    <i class="bi bi-arrow-clockwise me-1"></i> Refresh Data
+                </button>
+                <a href="model-analytics.html" class="btn btn-primary-uni btn-sm d-flex align-items-center gap-1">
+                    <i class="bi bi-cpu"></i> View ML Evaluation Report
+                </a>
+            </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-2">
+                <div class="stat-card">
+                    <div class="stat-icon primary"><i class="bi bi-people-fill"></i></div>
+                    <div>
+                        <div class="text-muted small">Registered Students</div>
+                        <h4 class="fw-bold mb-0" id="adm-stat-students">0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-2">
+                <div class="stat-card">
+                    <div class="stat-icon accent"><i class="bi bi-chat-left-dots-fill"></i></div>
+                    <div>
+                        <div class="text-muted small">Chat Sessions</div>
+                        <h4 class="fw-bold mb-0" id="adm-stat-convs">0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-2">
+                <div class="stat-card">
+                    <div class="stat-icon success"><i class="bi bi-chat-quote-fill"></i></div>
+                    <div>
+                        <div class="text-muted small">Total Messages</div>
+                        <h4 class="fw-bold mb-0" id="adm-stat-msgs">0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-2">
+                <div class="stat-card">
+                    <div class="stat-icon warning"><i class="bi bi-ticket-detailed-fill"></i></div>
+                    <div>
+                        <div class="text-muted small">Open Tickets</div>
+                        <h4 class="fw-bold mb-0 text-danger" id="adm-stat-tickets">0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-2">
+                <div class="stat-card">
+                    <div class="stat-icon primary"><i class="bi bi-book-half"></i></div>
+                    <div>
+                        <div class="text-muted small">Verified FAQs</div>
+                        <h4 class="fw-bold mb-0" id="adm-stat-faqs">0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-2">
+                <div class="stat-card">
+                    <div class="stat-icon accent"><i class="bi bi-question-diamond-fill"></i></div>
+                    <div>
+                        <div class="text-muted small">Unanswered Queries</div>
+                        <h4 class="fw-bold mb-0 text-warning" id="adm-stat-unanswered">0</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart.js Visualizations Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-7">
+                <div class="uni-card h-100">
+                    <h6 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-bar-chart-fill text-primary"></i> Most Frequent Student Intent Inquiries
+                    </h6>
+                    <div style="height: 250px;">
+                        <canvas id="intentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="uni-card h-100">
+                    <h6 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-pie-chart-fill text-success"></i> Support Ticket Status Distribution
+                    </h6>
+                    <div style="height: 250px; display: flex; justify-content: center;">
+                        <canvas id="ticketStatusChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Management Tabs -->
+        <div class="uni-card p-0 overflow-hidden shadow-sm">
+            <ul class="nav nav-tabs bg-light px-3 pt-2 border-bottom" id="adminTabs" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active fw-semibold" id="tab-faqs-btn" data-bs-toggle="tab" data-bs-target="#tab-faqs" type="button">
+                        <i class="bi bi-journal-text me-1"></i> FAQ Management
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link fw-semibold" id="tab-tickets-btn" data-bs-toggle="tab" data-bs-target="#tab-tickets" type="button">
+                        <i class="bi bi-ticket-perforated me-1"></i> Support Tickets
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link fw-semibold" id="tab-unanswered-btn" data-bs-toggle="tab" data-bs-target="#tab-unanswered" type="button">
+                        <i class="bi bi-question-circle me-1"></i> Unanswered Queries Review
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link fw-semibold" id="tab-announcements-btn" data-bs-toggle="tab" data-bs-target="#tab-announcements" type="button">
+                        <i class="bi bi-megaphone me-1"></i> Notices Management
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link fw-semibold" id="tab-users-btn" data-bs-toggle="tab" data-bs-target="#tab-users" type="button">
+                        <i class="bi bi-people me-1"></i> Registered Students
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content p-4" id="adminTabContent">
+
+                <!-- 1. FAQ Management -->
+                <div class="tab-pane fade show active" id="tab-faqs" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex gap-2">
+                            <input type="text" id="admin-faq-search" class="form-control form-control-sm" style="max-width: 260px;" placeholder="Search FAQs...">
+                            <select id="admin-faq-category" class="form-select form-select-sm" style="max-width: 160px;">
+                                <option value="">All Categories</option>
+                                <option value="academics">Academics</option>
+                                <option value="examinations">Examinations</option>
+                                <option value="finance">Finance</option>
+                                <option value="campus">Campus</option>
+                                <option value="support">Support</option>
+                                <option value="admissions">Admissions</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary-uni btn-sm" data-bs-toggle="modal" data-bs-target="#faqModal" onclick="prepareNewFaqModal()">
+                            <i class="bi bi-plus-lg me-1"></i> Add New FAQ
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 50px;">ID</th>
+                                    <th style="width: 250px;">Question</th>
+                                    <th>Answer</th>
+                                    <th style="width: 120px;">Category</th>
+                                    <th style="width: 80px;">Status</th>
+                                    <th style="width: 100px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-faqs-table-body">
+                                <tr><td colspan="6" class="text-center py-4 text-muted">Loading knowledge base...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Support Tickets -->
+                <div class="tab-pane fade" id="tab-tickets" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="small text-muted">Filter by Status:</span>
+                            <select id="admin-ticket-filter" class="form-select form-select-sm" style="width: 160px;">
+                                <option value="ALL">All Tickets</option>
+                                <option value="OPEN" selected>Open</option>
+                                <option value="IN_PROGRESS">In Progress</option>
+                                <option value="RESOLVED">Resolved</option>
+                                <option value="CLOSED">Closed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student</th>
+                                    <th>Category</th>
+                                    <th>Subject</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-tickets-table-body">
+                                <tr><td colspan="8" class="text-center py-4 text-muted">Loading tickets...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. Unanswered Queries -->
+                <div class="tab-pane fade" id="tab-unanswered" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <p class="text-secondary small mb-0">
+                            Queries with low model confidence or fallback triggers. Review them to identify missing FAQs or add examples to the training dataset.
+                        </p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student Query</th>
+                                    <th>Predicted Intent</th>
+                                    <th>Score</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-unanswered-table-body">
+                                <tr><td colspan="7" class="text-center py-4 text-muted">Loading unanswered queries...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. Notices & Announcements -->
+                <div class="tab-pane fade" id="tab-announcements" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0">Official University Circulars</h6>
+                        <button type="button" class="btn btn-primary-uni btn-sm" data-bs-toggle="modal" data-bs-target="#announcementModal">
+                            <i class="bi bi-plus-lg me-1"></i> Publish Announcement
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Published Date</th>
+                                    <th>Expiry Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-announcements-table-body">
+                                <tr><td colspan="5" class="text-center py-4 text-muted">Loading notices...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5. Registered Students Directory -->
+                <div class="tab-pane fade" id="tab-users" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Full Name</th>
+                                    <th>University Email</th>
+                                    <th>Department</th>
+                                    <th>Program</th>
+                                    <th>Semester</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-users-table-body">
+                                <tr><td colspan="7" class="text-center py-4 text-muted">Loading students directory...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal: FAQ Create / Edit -->
+    <div class="modal fade" id="faqModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="faqModalTitle">Add New University FAQ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="faq-form">
+                    <input type="hidden" id="faq-id">
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="faq-question" class="form-label small fw-semibold">Question <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="faq-question" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="faq-category-input" class="form-label small fw-semibold">Category <span class="text-danger">*</span></label>
+                                <select class="form-select" id="faq-category-input" required>
+                                    <option value="academics">Academics</option>
+                                    <option value="examinations">Examinations</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="campus">Campus</option>
+                                    <option value="support">Support</option>
+                                    <option value="admissions">Admissions</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="faq-answer" class="form-label small fw-semibold">Official Answer Text <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="faq-answer" rows="4" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="faq-keywords" class="form-label small fw-semibold">Keywords (space separated)</label>
+                                <input type="text" class="form-control" id="faq-keywords" placeholder="e.g. attendance percentage exam debarred">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="faq-source" class="form-label small fw-semibold">Source URL or Document Reference</label>
+                                <input type="text" class="form-control" id="faq-source" placeholder="https://university.edu/ordinance/attendance">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="faq-active" checked>
+                                    <label class="form-check-label small" for="faq-active">Active and searchable by chatbot</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-uni" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary-uni" id="btn-save-faq">Save FAQ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Admin Ticket Response -->
+    <div class="modal fade" id="adminTicketModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="adminTicketModalTitle">Respond to Support Ticket</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="admin-ticket-id">
+                    <div class="p-3 bg-light rounded mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-bold" id="admin-ticket-student">Student Name</span>
+                            <span class="badge bg-warning text-dark" id="admin-ticket-status-badge">OPEN</span>
+                        </div>
+                        <div class="fw-semibold text-primary mb-1" id="admin-ticket-subject">Subject</div>
+                        <p class="small text-secondary mb-0" id="admin-ticket-desc"></p>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Update Status</label>
+                            <select class="form-select form-select-sm" id="admin-update-ticket-status">
+                                <option value="OPEN">OPEN</option>
+                                <option value="IN_PROGRESS">IN_PROGRESS</option>
+                                <option value="RESOLVED">RESOLVED</option>
+                                <option value="CLOSED">CLOSED</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Assigned Staff</label>
+                            <input type="text" class="form-control form-control-sm" id="admin-update-ticket-assignee" placeholder="e.g. Dean Academics Office">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="admin-ticket-reply" class="form-label small fw-semibold">Post Official Staff Reply</label>
+                        <textarea class="form-control" id="admin-ticket-reply" rows="3" placeholder="Enter official response or instructions for the student..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-uni" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary-uni" id="btn-admin-submit-ticket-response">Submit Response & Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Announcement Create -->
+    <div class="modal fade" id="announcementModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Publish Campus Notice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="announcement-form">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="ann-title" class="form-label small fw-semibold">Notice Title <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="ann-title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ann-category" class="form-label small fw-semibold">Category <span class="text-danger">*</span></label>
+                            <select class="form-select" id="ann-category" required>
+                                <option value="Examinations">Examinations</option>
+                                <option value="Scholarships">Scholarships</option>
+                                <option value="Placements">Placements</option>
+                                <option value="Campus">Campus</option>
+                                <option value="Sports">Sports</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ann-desc" class="form-label small fw-semibold">Notice Text <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="ann-desc" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-uni" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary-uni">Publish Notice</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

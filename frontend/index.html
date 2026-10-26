@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniAssist AI – AI-Powered University Student Support</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-uni">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-mortarboard-fill text-primary" style="font-size: 1.5rem;"></i>
+                <span>UniAssist <span class="text-primary" style="color: var(--accent) !important;">AI</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chatbot.html">AI Chatbot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="model-analytics.html">ML Analytics</a></li>
+                </ul>
+                <div id="navbar-auth-section" class="d-flex align-items-center">
+                    <!-- Populated dynamically via api.js -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-5 bg-white border-bottom position-relative overflow-hidden">
+        <div class="container py-lg-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-light border mb-3">
+                        <span class="badge bg-success rounded-pill">Machine Learning</span>
+                        <span class="small text-muted fw-semibold">TF-IDF & Calibrated Linear Support Vector Classifier</span>
+                    </div>
+                    <h1 class="display-4 fw-extrabold mb-3" style="line-height: 1.2;">
+                        Instant, Intelligent Support for University Students
+                    </h1>
+                    <p class="lead text-secondary mb-4">
+                        UniAssist AI uses Machine Learning and Natural Language Processing to accurately understand student questions, retrieve official university guidelines, and provide verified assistance 24/7.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="chatbot.html" class="btn btn-primary-uni btn-lg d-flex align-items-center gap-2">
+                            <i class="bi bi-chat-dots-fill"></i> Ask UniAssist AI
+                        </a>
+                        <a href="academics.html" class="btn btn-outline-uni btn-lg d-flex align-items-center gap-2">
+                            <i class="bi bi-book"></i> Academic Information
+                        </a>
+                    </div>
+                    <div class="row g-3 mt-4 pt-2 border-top">
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-shield-check text-success fs-4"></i>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Verified Answers</h6>
+                                    <small class="text-muted">Official University Sources</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-lightning-charge text-primary fs-4"></i>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Sub-Second ML</h6>
+                                    <small class="text-muted">FastAPI & Scikit-Learn</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-lock text-info fs-4"></i>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Privacy-First</h6>
+                                    <small class="text-muted">Role-Protected Data</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Interactive Live Demo Preview Card -->
+                <div class="col-lg-5">
+                    <div class="uni-card p-0 shadow-lg border-2">
+                        <div class="p-3 bg-light border-bottom d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="chat-avatar assistant-av" style="width:30px;height:30px;font-size:0.8rem;">
+                                    <i class="bi bi-robot"></i>
+                                </span>
+                                <div>
+                                    <div class="fw-bold small text-primary">UniAssist AI Assistant</div>
+                                    <div class="text-success small d-flex align-items-center gap-1" style="font-size: 0.72rem;">
+                                        <span class="p-1 bg-success rounded-circle"></span> Live ML Model Online
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="badge bg-white text-muted border small">Demo Preview</span>
+                        </div>
+                        <div class="p-3 bg-white" style="min-height: 280px; display: flex; flex-direction: column; gap: 12px;" id="demo-chat-box">
+                            <div class="d-flex gap-2">
+                                <span class="chat-avatar student-av" style="width:28px;height:28px;font-size:0.75rem;">S</span>
+                                <div class="chat-bubble student-bubble py-2 px-3 small">
+                                    What is the mandatory attendance requirement?
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span class="chat-avatar assistant-av" style="width:28px;height:28px;font-size:0.75rem;">AI</span>
+                                <div class="chat-bubble assistant-bubble py-2 px-3 small">
+                                    Students must maintain at least <strong>75% attendance</strong> in lectures and practicals. A 10% relaxation (down to 65%) can be granted on certified medical grounds.
+                                    <div class="chat-bubble-meta mt-2 pt-1 border-top">
+                                        <span class="pill-intent">attendance_policy</span>
+                                        <span class="pill-score">Conf: 94.2%</span>
+                                        <span class="pill-source">Ordinance Sec 4</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-light border-top">
+                            <form id="landing-demo-form" class="d-flex gap-2">
+                                <input type="text" id="demo-query-input" class="form-control form-control-sm" placeholder="Try asking: 'When are semester exams?'" required>
+                                <button type="submit" class="btn btn-primary-uni btn-sm px-3">
+                                    <i class="bi bi-send-fill"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Capabilities Section -->
+    <section class="py-5">
+        <div class="container py-lg-4">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="text-primary fw-bold text-uppercase small tracking-wide">Comprehensive Coverage</span>
+                <h2 class="display-6 fw-bold mt-1">What UniAssist AI Helps You Solve</h2>
+                <p class="text-secondary">Designed specifically for university students, faculty, and administrative departments.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="uni-card h-100">
+                        <div class="stat-icon primary mb-3">
+                            <i class="bi bi-calendar-check-fill text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Academics & Attendance</h5>
+                        <p class="text-secondary small mb-0">
+                            Check minimum attendance thresholds, medical leave rules, syllabus downloads, timetable periods, and continuous assessment weightages.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="uni-card h-100">
+                        <div class="stat-icon accent mb-3">
+                            <i class="bi bi-journal-text text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Examinations & Results</h5>
+                        <p class="text-secondary small mb-0">
+                            Find mid-term and end-term date sheets, admit card procedures, grading scales (10-point scale), CGPA calculation, and re-evaluation rules.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="uni-card h-100">
+                        <div class="stat-icon success mb-3">
+                            <i class="bi bi-cash-coin text-success"></i>
+                        </div>
+                        <h5 class="fw-bold">Fees & Scholarships</h5>
+                        <p class="text-secondary small mb-0">
+                            Instant answers regarding semester tuition deadlines, payment options, installment rules, merit waivers, and National Scholarship Portal steps.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="uni-card h-100">
+                        <div class="stat-icon warning mb-3">
+                            <i class="bi bi-buildings-fill text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold">Hostel & Campus Life</h5>
+                        <p class="text-secondary small mb-0">
+                            Room allotment criteria, mess food timings, hostel gate curfew hours, 24/7 health center helpline, and sports facilities.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="uni-card h-100">
+                        <div class="stat-icon primary mb-3">
+                            <i class="bi bi-bus-front-fill text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Transportation & Library</h5>
+                        <p class="text-secondary small mb-0">
+                            Campus bus routes and timings, semester bus passes, Central Library book loan allowances, 24-hour reading rooms, and e-journal access.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="uni-card h-100">
+                        <div class="stat-icon accent mb-3">
+                            <i class="bi bi-headset text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Support & Grievances</h5>
+                        <p class="text-secondary small mb-0">
+                            If the chatbot is uncertain, students can create tracked support tickets with category, priority, and receive direct staff responses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-5 bg-white border-top border-bottom">
+        <div class="container py-lg-4">
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase small">Pipeline Architecture</span>
+                <h2 class="display-6 fw-bold mt-1">How UniAssist AI Delivers Reliable Answers</h2>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <div class="mx-auto rounded-circle bg-light border d-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <span class="fw-bold text-primary fs-5">1</span>
+                        </div>
+                        <h6 class="fw-bold">Student Query</h6>
+                        <p class="small text-muted">The student asks a question in everyday English via web or mobile.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <div class="mx-auto rounded-circle bg-light border d-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <span class="fw-bold text-primary fs-5">2</span>
+                        </div>
+                        <h6 class="fw-bold">NLP & ML Classification</h6>
+                        <p class="small text-muted">Text is normalized and classified by a trained Calibrated Linear SVC into one of 20 intents.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <div class="mx-auto rounded-circle bg-light border d-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <span class="fw-bold text-primary fs-5">3</span>
+                        </div>
+                        <h6 class="fw-bold">Knowledge Retrieval</h6>
+                        <p class="small text-muted">A TF-IDF similarity engine searches verified university FAQs and policy handbooks.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <div class="mx-auto rounded-circle bg-light border d-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <span class="fw-bold text-primary fs-5">4</span>
+                        </div>
+                        <h6 class="fw-bold">Grounded Response</h6>
+                        <p class="small text-muted">The system returns the exact official answer with source citation or triggers safe fallback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frequently Asked Questions Showcase -->
+    <section class="py-5">
+        <div class="container py-lg-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <span class="text-primary fw-bold text-uppercase small">Knowledge Base</span>
+                    <h2 class="display-6 fw-bold mt-1">Frequently Asked University Questions</h2>
+                    <p class="text-secondary mb-4">
+                        Explore verified sample answers directly grounded in university academic regulations and statutes.
+                    </p>
+                    <a href="chatbot.html" class="btn btn-primary-uni">Explore Full FAQ Search</a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item border-0 mb-3 rounded shadow-sm overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What is the mandatory attendance requirement to appear in examinations?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary small bg-light">
+                                    Students must maintain at least 75% attendance in lectures, tutorials, and practicals in each subject. A 10% relaxation (down to 65%) can be condoned by the Dean on valid medical grounds or university-sponsored event participation with approved documentation.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 rounded shadow-sm overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What are the eligibility criteria for B.Tech admission?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary small bg-light">
+                                    Candidates must pass 10+2 with minimum 60% aggregate in Physics, Mathematics, and Chemistry/Computer Science, and hold a valid JEE Main or University Entrance Test rank. 5% relaxation applies for SC/ST candidates.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 rounded shadow-sm overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    What are the operating hours and rules of the Central Library?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary small bg-light">
+                                    The Central Library is open Monday to Saturday from 8:00 AM to 10:00 PM (open 24/7 during exam weeks). Undergraduates can borrow 4 books for 14 days with online renewal available on the library OPAC portal.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top py-4 text-center text-muted small">
+        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+            <div>
+                © 2026-2027 UniAssist AI. University Student Support System. All rights reserved.
+            </div>
+            <div class="d-flex gap-3">
+                <a href="academics.html" class="text-decoration-none text-muted">Curriculum</a>
+                <a href="support.html" class="text-decoration-none text-muted">Student Support</a>
+                <a href="model-analytics.html" class="text-decoration-none text-muted">ML Architecture</a>
+                <a href="login.html" class="text-decoration-none text-muted">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/landing.js"></script>
+</body>
+</html>

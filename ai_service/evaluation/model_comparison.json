@@ -1,0 +1,26 @@
+{
+  "evaluation_timestamp": "2026-10-26T11:01:00.138871",
+  "total_samples": 408,
+  "train_samples": 326,
+  "test_samples": 82,
+  "num_classes": 20,
+  "models": {
+    "logistic_regression": {
+      "name": "TF-IDF + Logistic Regression",
+      "accuracy": 0.6463,
+      "macro_precision": 0.6864,
+      "macro_recall": 0.6425,
+      "macro_f1": 0.6375,
+      "weighted_f1": 0.6415
+    },
+    "calibrated_linear_svc": {
+      "name": "TF-IDF + Calibrated Linear SVC",
+      "accuracy": 0.7073,
+      "macro_precision": 0.7058,
+      "macro_recall": 0.705,
+      "macro_f1": 0.6825,
+      "weighted_f1": 0.6864
+    }
+  },
+  "selected_model": "Calibrated Linear SVC (Model B)"
+}

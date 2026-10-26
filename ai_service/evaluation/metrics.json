@@ -1,0 +1,167 @@
+{
+  "model_name": "Calibrated Linear SVC (Model B)",
+  "model_version": "v1.0.0",
+  "evaluation_timestamp": "2026-10-26T11:01:00.141039",
+  "test_accuracy": 0.7073,
+  "macro_precision": 0.7058,
+  "macro_recall": 0.705,
+  "macro_f1": 0.6825,
+  "weighted_f1": 0.6864,
+  "classification_report": {
+    "academic_calendar": {
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1-score": 0.4,
+      "support": 4.0
+    },
+    "admission_eligibility": {
+      "precision": 0.6,
+      "recall": 0.75,
+      "f1-score": 0.6666666666666666,
+      "support": 4.0
+    },
+    "admissions": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1-score": 0.8888888888888888,
+      "support": 4.0
+    },
+    "assignments": {
+      "precision": 0.42857142857142855,
+      "recall": 0.75,
+      "f1-score": 0.5454545454545454,
+      "support": 4.0
+    },
+    "attendance_policy": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 4.0
+    },
+    "campus_amenities": {
+      "precision": 0.4,
+      "recall": 0.5,
+      "f1-score": 0.4444444444444444,
+      "support": 4.0
+    },
+    "course_information": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1-score": 0.5714285714285714,
+      "support": 4.0
+    },
+    "exam_results": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 4.0
+    },
+    "exam_schedule": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1-score": 0.75,
+      "support": 4.0
+    },
+    "faculty_contacts": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1-score": 0.75,
+      "support": 4.0
+    },
+    "fee_payment": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1-score": 0.75,
+      "support": 4.0
+    },
+    "goodbye": {
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1-score": 0.8,
+      "support": 5.0
+    },
+    "greeting": {
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1-score": 0.8888888888888888,
+      "support": 5.0
+    },
+    "hostel_information": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1-score": 0.5714285714285714,
+      "support": 4.0
+    },
+    "library_facilities": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 4.0
+    },
+    "scholarships": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1-score": 0.5714285714285714,
+      "support": 4.0
+    },
+    "technical_support": {
+      "precision": 0.6,
+      "recall": 0.75,
+      "f1-score": 0.6666666666666666,
+      "support": 4.0
+    },
+    "timetable": {
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1-score": 0.8571428571428571,
+      "support": 4.0
+    },
+    "transport_facilities": {
+      "precision": 0.5714285714285714,
+      "recall": 1.0,
+      "f1-score": 0.7272727272727273,
+      "support": 4.0
+    },
+    "university_holidays": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1-score": 0.8,
+      "support": 4.0
+    },
+    "accuracy": 0.7073170731707317,
+    "macro avg": {
+      "precision": 0.7058333333333333,
+      "recall": 0.705,
+      "f1-score": 0.6824855699855699,
+      "support": 82.0
+    },
+    "weighted avg": {
+      "precision": 0.7105691056910568,
+      "recall": 0.7073170731707317,
+      "f1-score": 0.6864357864357865,
+      "support": 82.0
+    }
+  },
+  "classes": [
+    "academic_calendar",
+    "admission_eligibility",
+    "admissions",
+    "assignments",
+    "attendance_policy",
+    "campus_amenities",
+    "course_information",
+    "exam_results",
+    "exam_schedule",
+    "faculty_contacts",
+    "fee_payment",
+    "goodbye",
+    "greeting",
+    "hostel_information",
+    "library_facilities",
+    "scholarships",
+    "technical_support",
+    "timetable",
+    "transport_facilities",
+    "university_holidays"
+  ]
+}

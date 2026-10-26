@@ -1,0 +1,41 @@
+# ==============================================================================
+# UniAssist AI – Git Ignore Configuration
+# ==============================================================================
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# IDE & Editor Directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment & Local Secrets
+.env
+*.log
+
+# Java & Spring Boot (Backend)
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+.project
+.classpath
+.settings/
+
+# Python & AI Service
+ai_service/venv/
+ai_service/.venv/
+**/__pycache__/
+*.py[cod]
+*$py.class
+**/.pytest_cache/
+ai_service/.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/

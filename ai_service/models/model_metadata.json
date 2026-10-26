@@ -1,0 +1,157 @@
+{
+  "model_name": "UniAssist Intent Classifier",
+  "algorithm": "Calibrated Linear SVC (Model B)",
+  "version": "v1.0.0",
+  "trained_at": "2026-10-26T11:01:00.164617",
+  "total_dataset_size": 408,
+  "train_size": 326,
+  "test_size": 82,
+  "test_accuracy": 0.7073,
+  "macro_f1": 0.6825,
+  "weighted_f1": 0.6864,
+  "classes": [
+    "academic_calendar",
+    "admission_eligibility",
+    "admissions",
+    "assignments",
+    "attendance_policy",
+    "campus_amenities",
+    "course_information",
+    "exam_results",
+    "exam_schedule",
+    "faculty_contacts",
+    "fee_payment",
+    "goodbye",
+    "greeting",
+    "hostel_information",
+    "library_facilities",
+    "scholarships",
+    "technical_support",
+    "timetable",
+    "transport_facilities",
+    "university_holidays"
+  ],
+  "intent_metadata": {
+    "greeting": {
+      "description": "Greeting or initiating a conversation with the university chatbot",
+      "category": "general",
+      "default_response": "Hello! I am UniAssist AI, your 24/7 University Student Support Assistant. How may I help you today with your academic, examination, or campus queries?",
+      "source": "UniAssist Student Welcome Guide"
+    },
+    "goodbye": {
+      "description": "Ending the conversation or saying farewell",
+      "category": "general",
+      "default_response": "You are welcome! Feel free to reach back out anytime if you have more university-related questions. Have a productive day!",
+      "source": "UniAssist Student Welcome Guide"
+    },
+    "admissions": {
+      "description": "General admissions process, application forms, deadlines, and requirements",
+      "category": "admissions",
+      "default_response": "University admissions are conducted online via the official portal at admissions.university.edu. You must submit your 10th/12th/Graduation mark sheets, valid ID proof, entrance exam scorecards (e.g. JEE/GATE/CAT), and pay the registration fee before July 15th.",
+      "source": "University Admissions Prospectus 2026-27"
+    },
+    "admission_eligibility": {
+      "description": "Specific criteria and minimum marks required for admission to courses",
+      "category": "admissions",
+      "default_response": "Undergraduate B.Tech programs require a minimum of 60% aggregate in Physics, Chemistry, and Mathematics in Class 12 with a valid JEE/CUET score. Postgraduate programs require at least 55% in graduation in the relevant discipline. Reserved categories receive a 5% relaxation.",
+      "source": "Academic Regulations - Section 2.1 Eligibility Guidelines"
+    },
+    "course_information": {
+      "description": "Details about programs, curriculum, subjects, credits, and syllabus",
+      "category": "academics",
+      "default_response": "The university offers accredited B.Tech, M.Tech, BCA, MCA, BBA, and MBA degrees across Engineering, Computing, and Management. A standard 4-year B.Tech requires 160 credits. Full syllabi and elective lists are accessible under the Academics portal.",
+      "source": "University Curriculum & Scheme Handbook"
+    },
+    "timetable": {
+      "description": "Class schedules, lecture timings, lab batches, and timetable queries",
+      "category": "academics",
+      "default_response": "Class timetables are organized by department, section, and semester. Regular lectures run Monday through Friday from 9:00 AM to 4:30 PM with a lunch break from 1:00 PM to 2:00 PM. Section timetables are posted on the Student Dashboard and department notice boards.",
+      "source": "Academic Schedule & Dean Academics Office"
+    },
+    "exam_schedule": {
+      "description": "Dates, timings, date sheets, and schedules for mid-term and end-term examinations",
+      "category": "examinations",
+      "default_response": "Mid-semester exams are held in the 8th week of the semester, and End-Semester exams begin in the 16th week. Date sheets are published 3 weeks prior on the Examination Portal. Students must download admit cards at least 48 hours before their first examination.",
+      "source": "Controller of Examinations - Notification No. 104"
+    },
+    "exam_results": {
+      "description": "Information on semester results, grade cards, CGPA calculation, and re-evaluation",
+      "category": "examinations",
+      "default_response": "Semester results are announced within 30-45 days following the conclusion of exams on the Results Portal (results.university.edu). Passing criterion is 40% in theory and practicals with minimum Grade 'P' (Grade Point 4). Re-evaluation applications open for 10 days post-declaration.",
+      "source": "Examination Manual & Ordinance Section 7"
+    },
+    "attendance_policy": {
+      "description": "Mandatory attendance requirements, medical condonation, and shortage rules",
+      "category": "academics",
+      "default_response": "Students must maintain a minimum of 75% attendance in each registered subject. Condonation up to 10% (down to 65%) may be granted by the Dean on valid medical grounds or university-sponsored event participation supported by authentic documentation.",
+      "source": "University Academic Ordinance - Section 4: Attendance Rules"
+    },
+    "fee_payment": {
+      "description": "Tuition fees, payment methods, installments, deadlines, and receipts",
+      "category": "finance",
+      "default_response": "Semester fees must be paid online via the Student Finance Portal using Net Banking, UPI, Debit/Credit Card, or Bank Challan before the semester commencement date. A late fee of Rs. 100/day applies for payments made after the published deadline.",
+      "source": "Finance & Accounts Office - Circular 2026/02"
+    },
+    "scholarships": {
+      "description": "Merit scholarships, government schemes, fee concessions, and financial aid",
+      "category": "finance",
+      "default_response": "The university awards Merit Scholarships (up to 50% tuition waiver for top 5% branch rankers maintaining >= 8.5 CGPA), Merit-cum-Means assistance for family income below Rs. 3.0 Lakhs/annum, and facilitates all National & State Scholarship schemes via the Student Welfare cell.",
+      "source": "Dean Student Welfare - Scholarship Guidelines"
+    },
+    "academic_calendar": {
+      "description": "Semester start and end dates, teaching days, holidays, and milestones",
+      "category": "academics",
+      "default_response": "The Academic Calendar is published biannually by the Dean of Academics. The Autumn Semester runs from August 1 to December 15, and the Spring Semester runs from January 5 to May 20. The full calendar is downloadable on the Academics page.",
+      "source": "Academic Council Approved Calendar 2026-27"
+    },
+    "assignments": {
+      "description": "Submission guidelines, LMS portals, project deadlines, and late policies",
+      "category": "academics",
+      "default_response": "All assignments must be submitted via the university LMS portal (lms.university.edu) before 11:59 PM on the specified due date. Continuous assessment carries 25-30% weightage in each course. Plagiarism above 15% results in disqualification.",
+      "source": "Continuous Internal Assessment & Evaluation Policy"
+    },
+    "library_facilities": {
+      "description": "Central library timings, book borrowing limits, digital journals, and rules",
+      "category": "campus",
+      "default_response": "The Central Library is open Monday to Saturday from 8:00 AM to 10:00 PM (extended to 24 hours during exam weeks). Undergraduates can borrow up to 4 books for 14 days. Institutional access to IEEE, ACM, Springer, and ScienceDirect is provided via the Digital Library portal.",
+      "source": "Central Library Rules & Facilities Guide"
+    },
+    "hostel_information": {
+      "description": "Hostel room allocation, mess food, timings, visitor rules, and warden contacts",
+      "category": "campus",
+      "default_response": "On-campus hostel allocation is completed through the Hostel Portal prior to semester commencement. Hostels offer 2-seater and 3-seater furnished rooms with Wi-Fi, 24/7 power backup, and mess facilities. In-campus gate curfew is 9:30 PM.",
+      "source": "Hostel Administration & Chief Warden Office"
+    },
+    "transport_facilities": {
+      "description": "University bus routes, timings, bus passes, and parking facilities",
+      "category": "campus",
+      "default_response": "The university operates a fleet of 45 air-conditioned buses covering 30+ major routes across the metropolitan region. Morning buses arrive on campus by 8:40 AM and depart at 4:45 PM and 6:30 PM. Bus pass registration is done online via the Transport Portal.",
+      "source": "Campus Transport Cell Handbook"
+    },
+    "faculty_contacts": {
+      "description": "Finding professors, departmental heads, office hours, and contact details",
+      "category": "support",
+      "default_response": "The University Faculty Directory is available under the Academics portal, listing email addresses, cabin locations, and research areas for all department faculty. Faculty office hours for student consultations are held Tuesdays and Thursdays from 3:00 PM to 5:00 PM.",
+      "source": "University Faculty & Administration Directory"
+    },
+    "university_holidays": {
+      "description": "List of gazetted holidays, festival vacations, and declared breaks",
+      "category": "academics",
+      "default_response": "The university adheres to the state and central government gazetted holiday calendar, alongside institutional festival breaks during Diwali, Holi, and Winter Vacation. Central library and critical emergency services remain operational on select restricted holidays.",
+      "source": "Registrar Office - Gazetted Holiday Notification 2026"
+    },
+    "technical_support": {
+      "description": "Issues with student portal login, Wi-Fi connectivity, LMS, or passwords",
+      "category": "support",
+      "default_response": "For IT and portal assistance, visit the IT Helpdesk in Computer Center Room 102 or email it-support@university.edu. You can reset your password using the 'Forgot Password' link with your registered university email ID.",
+      "source": "IT Services & Infrastructure Helpdesk"
+    },
+    "campus_amenities": {
+      "description": "Information on cafeteria, medical center, sports complex, bank, and ATM",
+      "category": "campus",
+      "default_response": "The campus hosts a 24/7 Health Care Center with resident doctors and ambulance (Ext: 4444), a central Food Court open from 7:30 AM to 10:30 PM, an on-campus SBI branch with 2 ATMs, an Olympic-size Sports Complex, gymnasium, and a student stationery store.",
+      "source": "Campus Facilities & Student Amenities Directorate"
+    }
+  },
+  "pipeline_file": "model_pipeline.joblib"
+}
